@@ -1,0 +1,65 @@
+<div class="registro-container flex items-center justify-center bg-gray-200 p-4">
+  <div class="cajaRegistro w-full max-w-md bg-white shadow-lg rounded-lg p-6 space-y-6 border border-gray-200">
+    <div class="titleregistro text-center">
+      <h1 class="text-3xl font-semibold text-gray-500">Regístrate</h1>
+    </div>
+    <form [formGroup]="FormRegistro" class="space-y-5">
+      <div class="nombre flex flex-col md:flex-row md:space-x-4">
+        <div class="relative w-full md:w-1/2">
+          <i class="pi pi-user absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+          <input class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                 formControlName="names"
+                 type="text"
+                 placeholder="Nombre">
+        </div>
+        <div class="relative w-full md:w-1/2">
+          <i class="pi pi-user-edit absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+          <input class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                 formControlName="lastName"
+                 type="text"
+                 placeholder="apellido">
+        </div>
+      </div>
+
+      <div class="relative">
+        <i class="pi pi-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+        <input formControlName="password"
+               class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+               type="password"
+               placeholder="password">
+      </div>
+
+      <div class="relative">
+        <i class="pi pi-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+        <input formControlName="email"
+               class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+               type="email"
+               placeholder="Correo electrónico">
+      </div>
+
+      <div class="relative">
+        <i class="pi pi-phone absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+        <input formControlName="phone"
+               class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+               type="text"
+               placeholder="Teléfono">
+      </div>
+
+      <div class="relative">
+        <i class="pi pi-briefcase absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500"></i>
+        <input formControlName="carrera"
+               class="form-control w-full border border-gray-300 rounded-lg pl-10 p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+               type="text"
+               placeholder="Carrera">
+      </div>
+
+      <div>
+
+      </div>
+
+      <button class="w-full py-3 px-4 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              (click)="guardar()">Registrarse
+      </button>
+    </form>
+  </div>
+</div>

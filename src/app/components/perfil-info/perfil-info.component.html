@@ -1,0 +1,32 @@
+<div class="info-container  p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+  <div class="cajaInfo">
+    <h1 class="text-xl font-semibold text-center mb-4 text-orange-600">INFORMACIÓN DE PERFIL</h1>
+    <form [formGroup]="FormPerfil" class="space-y-4">
+      <div class="nombre grid gap-4 ">
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-user text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="nombre" type="text" placeholder="Ingresa tu nombre">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-id-card text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="apellido" type="text" placeholder="Ingresa apellido">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-envelope text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="email" type="email" placeholder="Ingresa tu correo">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-phone text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="telefono" type="tel" placeholder="Ingresa tu teléfono">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-briefcase text-orange-500"></i>
+          <input  class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="carrera" type="text" placeholder="Ingresa tu carrera">
+        </div>
+
+
+
+      </div>
+    </form>
+  </div>
+</div>

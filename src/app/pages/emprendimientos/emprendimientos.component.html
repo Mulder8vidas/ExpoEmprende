@@ -1,0 +1,76 @@
+<div class="container mx-auto p-4">
+
+  <div class="flex flex-col lg:flex-row gap-4">
+
+    <aside class="lg:w-1/4">
+
+      <div class="lg:hidden">
+        <button (click)="toggleDropdown()" class="w-full bg-orange-100 text-orange-900 font-semibold rounded-lg p-3 flex justify-between items-center">
+          Categorías
+          <svg [ngClass]="{'rotate-180': isDropdownOpen}" class="w-5 h-5 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <ul *ngIf="isDropdownOpen" class="space-y-2 bg-gray-300 p-4 mt-2 rounded-lg ">
+          <div class="filter-negocios flex flex-col items-start">
+            <!--moda mujer,moda hombres,calzado,bisuteria,alimentos,manualidades,tecnologia,otros-->
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='todos' ? 'selected-button' : '' " (click)="filtrar('todos')">Todos</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='moda mujer' ? 'selected-button' : '' " (click)="filtrar('moda mujer')">Moda Mujer</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='moda hombres' ? 'selected-button' : '' " (click)="filtrar('moda hombres')">Moda Hombres</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='calzado' ? 'selected-button' : '' " (click)="filtrar('calzado')">Calzado</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='bisuteria' ? 'selected-button' : '' " (click)="filtrar('bisuteria')">Bisuteria</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='alimentos' ? 'selected-button' : '' " (click)="filtrar('alimentos')">Alimentos</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='manualidades' ? 'selected-button' : '' " (click)="filtrar('manualidades')">Manualidades</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='tecnologia' ? 'selected-button' : '' " (click)="filtrar('tecnologia')">Tecnologia</button>
+            <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='otros' ? 'selected-button' : '' " (click)="filtrar('otros')">Otros</button>
+          </div>
+
+        </ul>
+      </div>
+
+
+      <div class="hidden lg:block bg-gray-300 text-orange-900 rounded-lg p-4 ">
+        <h2 class="text-xl font-semibold mb-4">Categorías</h2>
+        <ul class="space-y-2 flex flex-col items-start">
+          <!--moda mujer,moda hombres,calzado,bisuteria,alimentos,manualidades,tecnologia,otros-->
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='todos' ? 'selected-button' : '' " (click)="filtrar('todos')">Todos</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='moda mujer' ? 'selected-button' : '' " (click)="filtrar('moda mujer')">Moda Mujer</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='moda hombres' ? 'selected-button' : '' " (click)="filtrar('moda hombres')">Moda Hombres</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='calzado' ? 'selected-button' : '' " (click)="filtrar('calzado')">Calzado</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='bisuteria' ? 'selected-button' : '' " (click)="filtrar('bisuteria')">Bisuteria</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='alimentos' ? 'selected-button' : '' " (click)="filtrar('alimentos')">Alimentos</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='manualidades' ? 'selected-button' : '' " (click)="filtrar('manualidades')">Manualidades</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='tecnologia' ? 'selected-button' : '' " (click)="filtrar('tecnologia')">Tecnologia</button>
+          <button class="hover:bg-gray-500 p-2 rounded-lg cursor-pointer" [ngClass]="currentFilter=='otros' ? 'selected-button' : '' " (click)="filtrar('otros')">Otros</button>
+
+        </ul>
+      </div>
+    </aside>
+
+
+    <main class="flex-1">
+      <h1 class="text-2xl font-bold text-orange-800 mb-6">Emprendimientos</h1>
+
+
+      <div class="space-y-6 ">
+
+        <div class="bg-white border border-orange-300 rounded-lg shadow-lg p-4 flex flex-col md:flex-row items-center md:items-start gap-4" *ngFor="let emprendimiento of data">
+          @if (emprendimiento.imagenes.length > 0){
+            <img src="{{emprendimiento.imagenes[0]}}" alt="Imagen" class="w-24 h-24 object-cover rounded-lg border border-orange-200">
+
+          }@else{
+            <img src="/noFoto.jpg" alt="Imagen" class="w-24 h-24 object-cover rounded-lg border border-orange-200">
+          }
+
+          <div>
+            <h2 class="text-lg font-semibold text-orange-700">{{ emprendimiento.nombre }}</h2>
+            <p class="text-sm text-orange-500">{{ emprendimiento.rubro }}</p>
+            <p class="text-gray-600 mt-2">{{emprendimiento.descripcion}}</p>
+            <button (click)="verEmprendimiento(emprendimiento.id)" class=" btn font-semibold text-orange-700 border-orange-600 rounded-lg p-2 mt-2"> Ver Emprendimiento</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>

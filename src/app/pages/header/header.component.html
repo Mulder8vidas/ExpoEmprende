@@ -1,0 +1,77 @@
+<header class="bg-white shadow-md py-4">
+  <div class="container mx-auto flex justify-between items-center px-4">
+
+
+    <div class="flex items-center">
+      <img [routerLink]="'/home'" src="/logo-expo.png" alt="Logo" class=" imagen-logo h-12 min-h-12 w-auto ">
+    </div>
+
+
+    <div class="flex items-center border rounded-md overflow-hidden w-full max-w-xs mx-4">
+      <input type="text" placeholder="Buscar emprendimientos..." class="w-full px-4 py-2 outline-none">
+      <button class="bg-orange-500 text-white px-4 py-2">Buscar</button>
+    </div>
+
+
+    <div class="md:hidden">
+      <button (click)="toggleMenu()" id="menu-btn" class="text-gray-600 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+
+    <nav class="hidden md:flex space-x-4 ">
+      <button [routerLink]="['/home']" [routerLinkActive]="['active']" class="text-gray-600 hover:text-orange-500">
+        Inicio
+      </button>
+      <button [routerLink]="['/emprendimientos']" [routerLinkActive]="['active']"
+              class="text-gray-600 hover:text-orange-500">Emprendimientos
+      </button>
+      <button [routerLink]="['/contactanos']" [routerLinkActive]="['active']"
+              class="text-gray-600 hover:text-orange-500">Contactanos
+      </button>
+      @if (isCurrentUserActive()) {
+
+        <span
+          class="text-gray-600 flex items-center font-bold">Bienvenido! <br> {{ userService.getDatosUsuario().USER }}</span>
+
+        <button [routerLink]="['/mi-perfil']" class="login-btn"><i class="pi pi-user" style="color: #fd7c00"></i> Perfil
+        </button>
+        <button (click)="salir()" class="login-btn"><i class="pi pi-sign-out" style="color: #fd7c00"> </i> Salir
+        </button>
+      } @else {
+        <button [routerLink]="['/login']" class="login-btn"><i class="pi pi-user" style="color: #fd7c00"></i> Ingresar
+        </button>
+      }
+
+    </nav>
+  </div>
+
+
+  <div id="mobile-menu" class="md:hidden px-4 py-4 space-y-2 hidden text-center  bg-white w-full  shadow-md">
+    <button [routerLink]="['/home']" [routerLinkActive]="['active']" (click)="closeMenuOnSelect()"
+            class="block text-gray-600 hover:text-blue-500">Inicio
+    </button>
+    <button [routerLink]="['/emprendimientos']" [routerLinkActive]="['active']" (click)="closeMenuOnSelect()"
+            class="block text-gray-600 hover:text-blue-500">Emprendimiento
+    </button>
+    <button [routerLink]="['/contactanos']" [routerLinkActive]="['active']" (click)="closeMenuOnSelect()"
+            class="block text-gray-600 hover:text-blue-500">Contactanos
+    </button>
+    @if (isCurrentUserActive()) {
+
+      <span
+        class="text-gray-600 flex items-center font-bold">Bienvenido! <br> {{ userService.getDatosUsuario().USER }}</span>
+
+      <button [routerLink]="['/mi-perfil']" class="login-btn"><i class="pi pi-user" style="color: #fd7c00"></i> Perfil
+      </button>
+      <button (click)="salir()" class="login-btn"><i class="pi pi-sign-out" style="color: #fd7c00"> </i> Salir
+      </button>
+    } @else {
+      <button [routerLink]="['/login']" class="login-btn"><i class="pi pi-user" style="color: #fd7c00"></i> Ingresar
+      </button>
+    }
+  </div>
+</header>

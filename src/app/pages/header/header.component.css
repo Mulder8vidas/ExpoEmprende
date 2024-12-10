@@ -1,0 +1,47 @@
+.active{
+  color: rgb(253, 125, 1);
+}
+.login-btn{
+  border: solid #fd7c00 2px;
+  width: 120px;
+  padding: 5px 0;
+  border-radius: 25px;
+}
+.login-btn:hover{
+  background: rgba(239, 196, 159, 0.5);
+}
+.carousel-container{
+  height: 400px;
+}
+.imagen{
+
+}
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.overlay-text h2 {
+  margin: 0;
+}
+
+.overlay-text p {
+  margin: 8px 0 0 0;
+}
+.carousel-item-container {
+  position: relative;
+}
+.mobile-menu{
+ z-index: 99;
+  transition: all 1s ease;
+  transition-duration: 1s;
+}
+.imagen-logo{
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+@for (item of detalleEmprendimiento;track item){
+<div class="container mx-auto p-4 flex flex-col md:flex-row gap-6 bg-white rounded-lg shadow-lg">
+  <!-- Imagen del Emprendimiento -->
+  <p-galleria
+    [value]="item.imagenes"
+    [responsiveOptions]="responsiveOptions"
+    [containerStyle]="{ 'max-width': '640px' }"
+    [numVisible]="1"
+    [autoPlay]="true"
+    [circular]="false">
+    <ng-template pTemplate="item" let-item>
+      <img
+        [src]="item"
+        style="width: 100%; display: block;" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+      <div class="grid  justify-content-center">
+        <img
+          [src]="item"
+          style="display: block; width:30%; margin: auto" />
+      </div>
+    </ng-template>
+  </p-galleria>
+
+
+
+  <!-- Información del Emprendimiento -->
+  <div class="w-full md:w-1/2 space-y-4">
+    <!-- Detalles superiores -->
+    <p class="text-gray-500 text-sm">{{item.rubro}}</p>
+    <h1 class="text-3xl font-semibold text-orange-700">{{ item.nombre }}</h1>
+
+    <!-- Descripción y Calificaciones -->
+    <p class="text-gray-600">{{item.descripcion}}</p>
+    <div class="flex items-center gap-2">
+      <span class="text-yellow-500">★★★★★</span>
+      <span class="text-gray-500 text-sm">17 opiniones</span>
+    </div>
+    <div class="flex items-center text-gray-600 gap-2">
+      <i class="pi pi-map-marker text-orange-600"></i>
+      <span>{{ item.direccion }}</span>
+    </div>
+    <div class="flex items-center text-gray-600 gap-2">
+      <i class="pi pi-phone text-orange-600"></i>
+      <span>{{ item.telefono }}</span>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <button (click)="contactar()" class="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg">
+        Contactar Emprendimiento
+      </button>
+
+    </div>
+  </div>
+</div>
+}

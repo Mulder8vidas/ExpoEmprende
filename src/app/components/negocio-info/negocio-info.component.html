@@ -1,0 +1,60 @@
+<div class="info-container  p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+  <div class="cajaInfo">
+    <h1 class="text-xl font-semibold text-center mb-4 text-orange-600">INFORMACIÓN DE MI NEGOCIO</h1>
+    <form [formGroup]="FormNegocio" class="space-y-4">
+      <div class="nombre grid gap-4">
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-tag text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="nombreNegocio" type="text" placeholder="Nombre del negocio">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-file text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="ruc" type="text" placeholder="RUC">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-align-left text-orange-500"></i>
+          <textarea class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="descripcion" placeholder="Descripción del negocio"></textarea>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-phone text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="telefono" type="tel" placeholder="Teléfono">
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-map-marker text-orange-500"></i>
+          <input class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500 w-full outline-0" formControlName="direccion" type="text" placeholder="Dirección">
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <i class="pi pi-th-large text-orange-500"></i>
+          <select formControlName="rubro" class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500">
+            <option value="">Selecciona el rubro</option>
+            <option value="Moda Mujer">Moda Mujer</option>
+            <option value="Moda Hombres">Moda Hombres</option>
+            <option value="Calzado">Calzado</option>
+            <option value="Bisuteria">Bisuteria</option>
+            <option value="Alimentos">Alimentos</option>
+            <option value="Manualidades">Manualidades</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
+        <span class="font-normal text-xs text-red-600">*Solo subir imagenes JPG, Jpge, PNG</span>
+
+        <div class="flex items-center space-x-2">
+
+          <i class="pi pi-image text-orange-500"></i>
+          <input (change)="cargarImagenes($event)" class="form-control border-gray-300 rounded-lg p-2 focus:border-orange-500" formControlName="imagenes" type="file" multiple>
+        </div>
+
+        <div class="imagenes-content grid grid-cols-2 gap-4 mt-4">
+          <div *ngFor="let imagen of base64Strings" class="cuadroImagen">
+            <img class="fotos w-full h-auto rounded-md shadow-sm" [src]="imagen" alt="Imagen de producto">
+          </div>
+
+        </div>
+      </div>
+      <button (click)="guardarEmprendimiento()" class="w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 focus:outline-none">Guardar</button>
+
+    </form>
+  </div>
+</div>
